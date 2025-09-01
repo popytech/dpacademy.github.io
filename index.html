@@ -1,0 +1,868 @@
+orbitron<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalPro Academy - Devenez Acteur du digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #98a110;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #3aad0d;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        /* Header */
+        header {
+            background-color: #000;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #98a110;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #8000FF;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: 100px 0;
+        }
+
+        .mission-cards {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .mission-card {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #8000FF;
+        }
+
+        .mission-card p {
+            color: #666;
+        }
+
+        /* Formations Section */
+        .formations {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+
+        .formation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Desktop: 3 colonnes */
+            gap: 30px;
+        }
+
+        .formation-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .formation-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .formation-image {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .formation-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .formation-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Responsive: 2 colonnes sur mobile */
+        @media (max-width: 768px) {
+            .formation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Responsive: 1 colonne sur très petit écran */
+        @media (max-width: 480px) {
+            .formation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: #f0f0f0;
+        }
+
+        .faq-columns {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .faq-column {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer.open {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+
+        /* Témoignages Section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .testimonial-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #8000FF;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            max-width: 700px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .slider-arrow {
+            background-color: #8000FF;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-arrow:hover {
+            background-color: #6A0DAD;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-left, .footer-right {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #8000FF;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: #8000FF;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #000;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease;
+            }
+            
+            nav ul.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            
+            .hero {
+                padding: 100px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .mission-card, .faq-column {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">DP</div>
+                DigitalPro Academy
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="formations.html">Formations</a></li>
+                    <li><a href="#">Webinaire</a></li>
+                    <li><a href="#">Accompagnement</a></li>
+                    <li><a href="#">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Devenez Acteur du digital</h1>
+            <p>Transformez votre avenir avec nos formations expertes</p>
+            <a href="#" class="btn">Voir les formations</a>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="container">
+            <div class="mission-cards">
+                <div class="mission-card">
+                    <h3>MISSION</h3>
+                    <p>Notre mission est de rendre l'expertise digitale accessible à tous, à travers des formations de qualité, actualisées et adaptées aux besoins du marché.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>VALEURS</h3>
+                    <p>Excellence, innovation, accessibilité et accompagnement personnalisé sont les valeurs fondamentales qui guident toutes nos actions.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>VISION</h3>
+                    <p>Devenir la référence en formation digitale, en accompagnant chaque année des milliers de personnes vers la réussite professionnelle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations Section -->
+    <section class="formations">
+        <div class="container">
+            <h2 class="section-title">Formations Populaires</h2>
+            <div class="formation-grid">
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1115&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Marketing Digital</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1655720828013-3b5d5c5c0f5b?auto=format&fit=crop&w=1064&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Apprendre ChatGPT</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=1080&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Design Graphique</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1170&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Coder en 72h</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1170&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>E-commerce</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1170&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Gestion de Projet</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>SEO & Référencement</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Data Analyse</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Community Management</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>UX/UI Design</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Développement Mobile</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Cybersécurité</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Cloud Computing</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Intelligence Artificielle</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-image" style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="formation-content">
+                        <h3>Gestion d'équipe</h3>
+                        <a href="#" class="btn">Découvrir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Questions Fréquentes</h2>
+            <div class="faq-columns">
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Comment s'inscrire à une formation ?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Pour vous inscrire, il suffit de choisir la formation qui vous intéresse, cliquer sur "S'inscrire" et suivre les étapes de paiement. Vous recevrez ensuite un email de confirmation avec tous les détails.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Les formations sont-elles certifiantes ?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Oui, toutes nos formations délivrent une certification reconnue par les professionnels du secteur. Cette certification atteste de l'acquisition des compétences visées par la formation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Quel est le rythme des formations ?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Le rythme varie selon les formations. Certaines sont intensives sur quelques semaines, d'autres s'étalent sur plusieurs mois. Vous pouvez généralement adapter votre rythme d'apprentissage à vos disponibilités.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Y a-t-il un accompagnement personnalisé ?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolument! Chaque apprenant bénéficie d'un suivi personnalisé avec un formateur expert qui répond à vos questions et vous guide tout au long de votre parcours.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Puis-je me faire rembourser ?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Nous proposons une garantie satisfait ou remboursé pendant 14 jours après le début de la formation. Si vous n'êtes pas satisfait, vous pouvez demander un remboursement intégral.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Comment accéder aux cours après inscription ?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Une fois inscrit, vous recevez vos identifiants pour accéder à notre plateforme d'apprentissage. Vous pouvez suivre les cours à tout moment, de n'importe où, sur ordinateur, tablette ou smartphone.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Témoignages</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-slide">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Popy Traoré" class="testimonial-image">
+                        <h3 class="testimonial-name">Popy Traoré</h3>
+                        <p class="testimonial-text">"La formation Marketing Digital a transformé ma carrière. J'ai pu lancer mon entreprise seulement 3 mois après avoir terminé le programme. Les conseils des formateurs sont inestimables!"</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Jean Dupont" class="testimonial-image">
+                        <h3 class="testimonial-name">Jean Dupont</h3>
+                        <p class="testimonial-text">"J'ai suivi la formation Développement Web et j'ai décroché un emploi avant même la fin du programme. L'approche pratique et les projets concrets m'ont vraiment préparé au monde professionnel."</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sophie Martin" class="testimonial-image">
+                        <h3 class="testimonial-name">Sophie Martin</h3>
+                        <p class="testimonial-text">"Excellente formation Design Graphique! J'ai appris énormément en peu de temps. La plateforme est intuitive et les retours personnalisés des formateurs m'ont beaucoup aidée à progresser."</p>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-arrow next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>Contacts</h3>
+                    <p>Email: contact@digitalproacademy.com</p>
+                    <p>Téléphone: +33 1 23 45 67 89</p>
+                    <p>Adresse: 123 Rue du Digital, 75000 Paris</p>
+                </div>
+                <div class="footer-right">
+                    <h3>Liens rapides</h3>
+                    <div class="footer-links">
+                        <a href="#">Accueil</a>
+                        <a href="#">À propos</a>
+                        <a href="#">Mentions légales</a>
+                        <a href="#">Politique de confidentialité</a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DigitalPro Academy. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Burger pour mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+        });
+
+        // FAQ - Ouverture/fermeture des questions
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('open');
+                
+                const icon = question.querySelector('i');
+                if (answer.classList.contains('open')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Slider Témoignages
+        const track = document.querySelector('.testimonial-track');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
+        let autoSlideInterval;
+
+        function updateSlidePosition() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function goToSlide(index) {
+            if (index < 0) {
+                currentIndex = slides.length - 1;
+            } else if (index >= slides.length) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+            updateSlidePosition();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            goToSlide(currentIndex - 1);
+            startAutoSlide();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            goToSlide(currentIndex + 1);
+            startAutoSlide();
+        });
+
+        // Démarrer le défilement automatique
+        startAutoSlide();
+
+        // Pause auto slide quand le slider est survolé
+        const slider = document.querySelector('.testimonial-slider');
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+    </script>
+</body>
+</html>
