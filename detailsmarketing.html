@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Digital - DigitalPro Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #090111;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #6A0DAD;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        /* Header */
+        header {
+            background-color: #000;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #8000FF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a.active {
+            color: #8000FF;
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #8000FF;
+        }
+
+        nav ul li a:hover {
+            color: #8000FF;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Course Hero Section */
+        .course-hero {
+            padding: 60px 0 40px;
+        }
+
+        .course-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 500px;
+            background-color: #ddd;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: rgba(128, 0, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .play-button:hover {
+            background-color: #6A0DAD;
+        }
+
+        .play-button i {
+            color: white;
+            font-size: 2rem;
+            margin-left: 5px;
+        }
+
+        .course-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .info-card {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #8000FF;
+        }
+
+        /* Course Content Section */
+        .course-content {
+            padding: 80px 0;
+        }
+
+        .content-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .course-description {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .course-description h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .course-description p {
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .course-sidebar {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .modules-list {
+            margin-bottom: 30px;
+        }
+
+        .module-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .module-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .module-item i {
+            transition: transform 0.3s ease;
+        }
+
+        .module-item.active i {
+            transform: rotate(180deg);
+        }
+
+        .module-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: #f9f9f9;
+            padding: 0 15px;
+        }
+
+        .module-content.open {
+            max-height: 200px;
+            padding: 15px;
+        }
+
+        .module-content ul {
+            padding-left: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .pricing-box {
+            background-color: #8000FF;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background-color: #f0f0f0;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .testimonial-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #8000FF;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            max-width: 700px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .slider-arrow {
+            background-color: #8000FF;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-arrow:hover {
+            background-color: #6A0DAD;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-left, .footer-right {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #8000FF;
+        }
+
+        .social-title {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: #8000FF;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .video-container {
+                height: 400px;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #000;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease;
+            }
+            
+            nav ul.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            
+            .video-container {
+                height: 300px;
+            }
+            
+            .course-info {
+                flex-direction: column;
+            }
+            
+            .info-card {
+                width: 100%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .course-title {
+                font-size: 2rem;
+            }
+            
+            .video-container {
+                height: 250px;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .price {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">DP</div>
+                DigitalPro Academy
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#" class="active">Formations</a></li>
+                    <li><a href="#">Webinaires</a></li>
+                    <li><a href="#">Accompagnement</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Course Hero Section -->
+    <section class="course-hero">
+        <div class="container">
+            <h1 class="course-title">Marketing Digital - Devenez un Expert</h1>
+            
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    Vidéo de présentation
+                </div>
+            </div>
+            
+            <div class="course-info">
+                <div class="info-card">
+                    <h3>Formateur</h3>
+                    <p>Popy Traoré</p>
+                    <p>Expert en Marketing Digital avec 10 ans d'expérience</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Niveau</h3>
+                    <p>Intermédiaire</p>
+                    <p>Connaissances de base recommandées</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Durée</h3>
+                    <p>6 heures</p>
+                    <p>10 modules complets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Content Section -->
+    <section class="course-content">
+        <div class="container">
+            <div class="content-container">
+                <div class="course-description">
+                    <h2>Description du cours</h2>
+                    <p>Cette formation complète en marketing digital vous apprendra toutes les stratégies essentielles pour réussir dans le monde du digital. Que vous soyez entrepreneur, marketeur ou que vous souhaitiez simplement développer vos compétences, ce cours est fait pour vous.</p>
+                    
+                    <p>Vous découvrirez comment créer des campagnes publicitaires efficaces, optimiser votre référencement, maîtriser les réseaux sociaux, et bien plus encore. Chaque module est conçu pour vous donner des compétences pratiques que vous pourrez appliquer immédiatement.</p>
+                    
+                    <p>Notre approche combine théorie et pratique avec des études de cas réels, des exercices concrets et des retours personnalisés. À la fin de cette formation, vous serez capable de concevoir et mettre en œuvre une stratégie de marketing digital complète.</p>
+                    
+                    <p>Le marketing digital évolue constamment, c'est pourquoi nous mettons régulièrement à jour notre contenu pour vous garantir d'apprendre les techniques les plus récentes et efficaces.</p>
+                </div>
+                
+                <div class="course-sidebar">
+                    <div class="modules-list">
+                        <h2>Modules de formation</h2>
+                        
+                        <div class="module-item">
+                            <span>Module 1: Introduction au Marketing Digital</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="module-content">
+                            <ul>
+                                <li>Les fondamentaux du marketing digital</li>
+                                <li>Évolution et tendances actuelles</li>
+                                <li>Définir sa stratégie digitale</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="module-item">
+                            <span>Module 2: Référencement Naturel (SEO)</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="module-content">
+                            <ul>
+                                <li>Les bases du SEO</li>
+                                <li>Optimisation on-page et off-page</li>
+                                <li>Techniques de netlinking</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="module-item">
+                            <span>Module 3: Publicité en Ligne (SEA)</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="module-content">
+                            <ul>
+                                <li>Google Ads et campagnes search</li>
+                                <li>Publicité display et remarketing</li>
+                                <li>Optimisation des campagnes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="module-item">
+                            <span>Module 4: Marketing des Réseaux Sociaux</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="module-content">
+                            <ul>
+                                <li>Stratégie de contenu</li>
+                                <li>Publicité sur les réseaux sociaux</li>
+                                <li>Community management</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="module-item">
+                            <span>Module 5: Email Marketing</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="module-content">
+                            <ul>
+                                <li>Création de listes d'emails</li>
+                                <li>Campagnes automatisées</li>
+                                <li>Mesure de performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-box">
+                        <div class="price">150.000 Fcfa</div>
+                        <a href="#" class="btn">Acheter la formation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Témoignages</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-slide">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Popy Traoré" class="testimonial-image">
+                        <h3 class="testimonial-name">Popy Traoré</h3>
+                        <p class="testimonial-text">"Cette formation a transformé ma carrière. J'ai pu lancer mon entreprise seulement 3 mois après avoir terminé le programme. Les conseils des formateurs sont inestimables!"</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Jean Dupont" class="testimonial-image">
+                        <h3 class="testimonial-name">Jean Dupont</h3>
+                        <p class="testimonial-text">"J'ai suivi la formation Marketing Digital et j'ai décroché un emploi avant même la fin du programme. L'approche pratique et les projets concrets m'ont vraiment préparé au monde professionnel."</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sophie Martin" class="testimonial-image">
+                        <h3 class="testimonial-name">Sophie Martin</h3>
+                        <p class="testimonial-text">"Excellente formation! J'ai appris énormément en peu de temps. La plateforme est intuitive et les retours personnalisés des formateurs m'ont beaucoup aidée à progresser."</p>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-arrow next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>Contacts</h3>
+                    <p>Email: contact@digitalproacademy.com</p>
+                    <p>Téléphone: +33 1 23 45 67 89</p>
+                    <p>Adresse: 123 Rue du Digital, 75000 Paris</p>
+                    
+                    <div class="footer-links">
+                        <a href="#">Accueil</a>
+                        <a href="#">À propos</a>
+                        <a href="#">Mentions légales</a>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <h3 class="social-title">Réseaux sociaux</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DigitalPro Academy. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Burger pour mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+        });
+
+        // Vidéo de présentation
+        const playButton = document.querySelector('.play-button');
+        const videoPlaceholder = document.querySelector('.video-placeholder');
+        
+        playButton.addEventListener('click', () => {
+            // Dans une implémentation réelle, on chargerait une vraie vidéo
+            // Pour cette démo, on va simplement changer le placeholder
+            videoPlaceholder.innerHTML = `
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+            `;
+        });
+
+        // Modules dépliants
+        const moduleItems = document.querySelectorAll('.module-item');
+        
+        moduleItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const content = item.nextElementSibling;
+                const isOpen = content.classList.contains('open');
+                
+                // Fermer tous les modules ouverts
+                document.querySelectorAll('.module-content.open').forEach(openContent => {
+                    openContent.classList.remove('open');
+                });
+                
+                document.querySelectorAll('.module-item.active').forEach(activeItem => {
+                    activeItem.classList.remove('active');
+                });
+                
+                // Ouvrir le module cliqué s'il n'était pas déjà ouvert
+                if (!isOpen) {
+                    item.classList.add('active');
+                    content.classList.add('open');
+                }
+            });
+        });
+
+        // Slider Témoignages
+        const track = document.querySelector('.testimonial-track');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
+        let autoSlideInterval;
+
+        function updateSlidePosition() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function goToSlide(index) {
+            if (index < 0) {
+                currentIndex = slides.length - 1;
+            } else if (index >= slides.length) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+            updateSlidePosition();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            goToSlide(currentIndex - 1);
+            startAutoSlide();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            stopAutoSlide();
+            goToSlide(currentIndex + 1);
+            startAutoSlide();
+        });
+
+        // Démarrer le défilement automatique
+        startAutoSlide();
+
+        // Pause auto slide quand le slider est survolé
+        const slider = document.querySelector('.testimonial-slider');
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+
+        // Bouton d'achat
+        const buyButton = document.querySelector('.pricing-box .btn');
+        buyButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Redirection vers la page de paiement');
+        });
+    </script>
+</body>
+</html>
